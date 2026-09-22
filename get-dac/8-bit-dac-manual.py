@@ -6,7 +6,7 @@ dac_bits=[16, 20, 21, 25, 26, 17, 27, 22]
 GPIO.setup(dac_bits, GPIO.OUT)
 GPIO.output(dac_bits, 0)
 
-dynamic_range=3.3
+dynamic_range=3.16
 
 def voltage_to_number(voltage):
     if not (0.0<=voltage<=dynamic_range):
