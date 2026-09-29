@@ -10,7 +10,7 @@ times=0.0
 try:
     mcp4725=mcp.MCP4725(5.2)
     while True:
-        signal=tg.get_sin_wave_amplitude(signal_frequency, times)
+        signal=tg.get_tri_wave_amplitude(signal_frequency, times)
         tg.wait_for_sampling_period(sampling_frequency)
         times=times+(1/sampling_frequency)
         mcp4725.set_voltage(amplitude*signal)

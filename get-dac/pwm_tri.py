@@ -10,7 +10,7 @@ try:
     dac=pwm.PWM_DAC(12, 500, 3.16, True)
 
     while (True):
-        signal=tg.get_sin_wave_amplitude(signal_frequency, times)
+        signal=tg.get_tri_wave_amplitude(signal_frequency, times)
         tg.wait_for_sampling_period(sampling_frequency)
         times=times+(1/sampling_frequency)
         dac.set_voltage(amplitude*signal)
