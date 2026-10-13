@@ -25,20 +25,22 @@ class R2R_ADC:
     def sequential_counting_adc(self):
         for value in range(255):
             self.number_to_dac(value)
-            voltage=value/255 * self.dynamic_range
+            voltage= value / 255 * self.dynamic_range
             time.sleep(self.compare_time)
             comparatorValue=GPIO.input(self.comp_gpio)
-            if comparatorValue==1:
+            if comparatorValue == 1:
                 break
+        
         return voltage
         
     def get_sc_voltage(self):
         return (self.sequential_counting_adc())
 
-try:
-    adc = R2R_ADC(3.22, 0.001, True)
-    while True:
-        value=adc.get_sc_voltage()
-        print(f"Напряжение: {value:.2f} В")
-finally:
-    adc.deinit()
+if __name__=="__main__":
+    try:
+        adc = R2R_ADC(3.22, 0.001, True)
+        while True:
+            value=adc.get_sc_voltage()
+            print(f"Напряжение: {value:.2f} В")
+    finally:
+        adc.deinit()
